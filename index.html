@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+  body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <H1>STUDENT NAME : Uday SIngh Mahar</H1>
+ <h1>CURRENT DATE :13.06.2025</h1> 
+<h1>SUBJECT NAME :WEB</h1>
+
+<pre>
+     <h2>INFORMATION ABOUT ME :I am an IT student in isma </h2>
+
+     <h2> Task Details :</h2>
+     <a href="#task1">task1</a>
+     <a href="#task2">task2</a>
+     <a href="#task3">task3</a>
+     <a href="#task4">task4</a>
+     <a href="#task5">task5</a>
+     <a href="#task6">task6</a>
+     <a href="#task7">task7</a>
+     <a href="#task8">task8</a>
+     <a href="#task9">task9</a>
+     <a href="#task10">task10</a>
+     </pre>
+     
+<section id="task1">
+    <h2>Task 1: String Manipulation</h2>
+    <p>Enter a string to reverse it and extract the 3rd and 4th characters:</p>
+    
+    <input type="text" id="inputString" placeholder="Enter your string here" />
+    <button onclick="manipulateString()">Submit</button>
+
+    <div id="outputTask1" style="margin-top: 15px; font-weight: bold;"></div>
+
+    <script>
+        function manipulateString() {
+            const input = document.getElementById("inputString").value;
+
+            if (input.length < 4) {
+                document.getElementById("outputTask1").innerText = "Please enter at least 4 characters.";
+                return;
+            }
+
+            const reversed = input.split("").reverse().join("");
+            const thirdChar = input[2];
+            const fourthChar = input[3];
+
+            document.getElementById("outputTask1").innerHTML = `
+                Original String: ${input}<br>
+                Reversed String: ${reversed}<br>
+                3rd Character: ${thirdChar}<br>
+                4th Character: ${fourthChar}
+            `;
+        }
+    </script>
+</section>
+
+<section id="task2">
+    <h2>Task 2: Signup Form</h2>
+    <form id="signupForm" onsubmit="handleSubmit(event)">
+        <label for="name">Name:</label><br />
+        <input type="text" id="name" name="name" required /><br /><br />
+
+        <label for="email">Email:</label><br />
+        <input type="email" id="email" name="email" required /><br /><br />
+
+        <label for="password">Password:</label><br />
+        <input type="password" id="password" name="password" required /><br /><br />
+
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+
+    <div id="outputTask2" style="margin-top: 20px; font-weight: bold;"></div>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault(); 
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            const output = `
+                Submitted Data:<br>
+                Name: ${name}<br>
+                Email: ${email}<br>
+                Password: ${password}
+            `;
+
+            document.getElementById("outputTask2").innerHTML = output;
+        }
+    </script>
+</section>
+<section id="task3">
+    <h2>Task 3: Person Object</h2>
+    <p>Click the button below to create and display a person object.</p>
+
+    <button onclick="showPerson()">Create Person Object</button>
+
+    <div id="outputTask3" style="margin-top: 15px; font-weight: bold;"></div>
+
+    <script>
+        function showPerson() {
+            const person = {
+                name: "Uday Singh Mahar",
+                age: 22,
+                gender: "Male"
+            };
+
+            const output = `
+                Person Object:<br>
+                Name: ${person.name}<br>
+                Age: ${person.age}<br>
+                Gender: ${person.gender}
+            `;
+
+            document.getElementById("outputTask3").innerHTML = output;
+        }
+    </script>
+</section>
+<section id="task4">
+    <h2>Task 4: Stopwatch</h2>
+    <p>Use the buttons below to control the stopwatch.</p>
+    <h3 id="timerDisplay">0</h3>
+    <button onclick="startTimer()">Start</button>
+    <button onclick="pauseTimer()">Pause</button>
+    <button onclick="resetTimer()">Reset</button>
+    <button onclick="stopTimer()">Stop</button>
+    <script>
+      let counter = 0;
+      let intervalId = null;
+
+      function updateDisplay() {
+        document.getElementById("timerDisplay").innerText = counter;
+      }
+
+      function startTimer() {
+        if (!intervalId) {
+          intervalId = setInterval(() => {
+            counter++;
+            updateDisplay();
+          }, 1000);
+        }
+      }
+
+      function pauseTimer() {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+
+      function resetTimer() {
+        counter = 0;
+        updateDisplay();
+      }
+
+      function stopTimer() {
+        clearInterval(intervalId);
+        intervalId = null;
+        counter = 0;
+        updateDisplay();
+      }
+    </script>
+  </section>
+
+  <section id="task5">
+  <h2>Task 5: Math Operations</h2>
+  <p>Enter two numbers and choose an operation to perform:</p>
+
+  <input type="number" id="num1" placeholder="First num" />
+  <select id="operation">
+    <option value="sum">Sum (+)</option>
+    <option value="diff">Subcreation (-)</option>
+    <option value="mul">Multiplication (*)</option>
+    <option value="div">Division (/)</option>
+  </select>
+  <input type="number" id="num2" placeholder="Second num" />
+
+  
+
+  <button onclick="calculateResult()">=</button>
+
+  <div id="outputTask5" style="margin-top: 15px; font-weight: bold;"></div>
+
+  <script>
+    function calculateResult() {
+      const a = parseFloat(document.getElementById('num1').value);
+      const b = parseFloat(document.getElementById('num2').value);
+      const op = document.getElementById('operation').value;
+      let result;
+
+      if (isNaN(a) || isNaN(b)) {
+        document.getElementById('outputTask5').innerText = 'Please enter valid numbers.';
+        return;
+      }
+
+      switch (op) {
+        case 'sum':
+          result = a + b;
+          break;
+        case 'diff':
+          result = a - b;
+          break;
+        case 'mul':
+          result = a * b;
+          break;
+        case 'div':
+          if (b === 0) {
+            result = 'Error: Division by zero is not allowed.';
+          } else {
+            result = a / b;
+          }
+          break;
+        default:
+          result = 'Invalid operation selected.';
+      }
+
+      document.getElementById('outputTask5').innerText = `Result: ${result}`;
+    }
+  </script>
+</section>
+<section id="task6">
+  <h2>Task 6: Array Operations</h2>
+  <p>Click the button below to perform some array operations and display results.</p>
+  <button onclick="arrayOperations()">Run Task</button>
+  <div id="outputTask6" style="margin-top:15px; font-weight:bold;"></div>
+
+  <script>
+    function arrayOperations() {
+      let fruits = ['mango', 'banana', 'grapes' , 'watermelon']
+      fruits.push('mango')
+      fruits.unshift('grape')
+      let removedFruit = fruits.pop()
+      let shiftedFruit = fruits.shift()
+      let indexOfBanana = fruits.indexOf('watermelon')
+
+      let output = `Array after operations: ${fruits.join(', ')}<br>`
+      output += `Removed last fruit: ${removedFruit}<br>`
+      output += `Removed first fruit: ${shiftedFruit}<br>`
+      output += `Index of banana: ${indexOfBanana}<br>`
+
+      document.getElementById('outputTask6').innerHTML = output
+    }
+  </script>
+</section>
+<section id="task7">
+  <h2>Task 7: Map Function to Double Array Elements</h2>
+  <p>Click the button to double each number in the array:</p>
+  <button onclick="doubleArray()">Run Task</button>
+  <div id="outputTask7" style="margin-top:15px; font-weight:bold;"></div>
+
+  <script>
+    function doubleArray() {
+      const numbers = [1, 2, 3, 4, 5];
+      const doubled = numbers.map(num => num * 2);
+      document.getElementById('outputTask7').innerHTML = `
+        Original Array: ${numbers.join(', ')}<br>
+        Doubled Array: ${doubled.join(', ')}
+      `;
+    }
+  </script>
+</section>
+
+
+</section>
+
+
+<pre>
+Mini project Title :task
+Information :
+
+1 Write a JavaScript function to manipulate strings, such as reversing a string and extracting specific 3rd and 4th characters from string.
+2 Develop a JavaScript program to display a input signup form and display entered data. (use reset,submit button)
+3 Create an object representing a person with properties like name, age, and gender.
+4 Create a countdown timer/stopwatch using setInterval. (stop, pause, reset and play button).
+5 Write a function that takes two numbers as arguments and returns their sum, difference, multiplication and division as per user choice. 
+6 Work with arrays in JavaScript to store and manage collections of data.
+7 Apply the map function to double each element in an array.
+8 create a JS program that find 10th char from entered Array(use popup)
+9 create a Js program to find the last element from the given array(use popup)
+10 Using splice - you can just delete elements, insert elements, replace elements - one by one and simultaneously in JavaScript.
+
+<h1>SCREENSHOTS:</h1>
+<img src="Screenshot 2025-06-13 114140.jpg" alt="SS" width="800">
+<img src="Screenshot 2025-06-13 114202.jpg" alt="ss"width="800">
+<img src="Screenshot 2025-06-13 114232.jpg" alt="ss"width="800">
+<img src="Screenshot 2025-06-13 123140.png" alt="ss"width="800">
+</pre>
+
+</body>
+</html>
